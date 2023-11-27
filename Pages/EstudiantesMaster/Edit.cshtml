@@ -1,0 +1,42 @@
+﻿@page
+@model EstudiantesRazor.Pages.EstudiantesMaster.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>EDITAR</h1>
+
+<h4>Estudiantes</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Estudiantes.IdEstudiantes" />
+            <div class="form-group">
+                <label asp-for="Estudiantes.Nombre" class="control-label"></label>
+                <input asp-for="Estudiantes.Nombre" class="form-control" />
+                <span asp-validation-for="Estudiantes.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estudiantes.Apellido" class="control-label"></label>
+                <input asp-for="Estudiantes.Apellido" class="form-control" />
+                <span asp-validation-for="Estudiantes.Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Estudiantes.FechaNacimiento" class="control-label"></label>
+                <input asp-for="Estudiantes.FechaNacimiento" class="form-control" />
+                <span asp-validation-for="Estudiantes.FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                &nbsp;&nbsp; <a asp-page="./Index" class="btn btn-success">Regresar a la lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

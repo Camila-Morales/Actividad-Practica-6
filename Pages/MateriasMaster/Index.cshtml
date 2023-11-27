@@ -1,0 +1,54 @@
+﻿@page
+@model EstudiantesRazor.Pages.MateriasMaster.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">INGRESAR MATERIA</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Materia[0].Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Materia[0].Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Materia != null && Model.Materia.Any())
+        {
+            @foreach (var item in Model.Materia)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" class="btn btn-warning" asp-route-id="@item.IdMateria">Edit</a> |
+                        <a asp-page="./Details" class="btn btn-primary" asp-route-id="@item.IdMateria">Details</a> |
+                        <a asp-page="./Delete" class="btn btn-danger" asp-route-id="@item.IdMateria">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center">
+                    Materias no disponibles en la base de datos.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
